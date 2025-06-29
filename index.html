@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAFARLY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .card {
+            background-color: #1e1e1e;
+            border: 1px solid #4a4a4a;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+        }
+        .btn-golden {
+            background-color: #ffd700;
+            color: #121212;
+            font-weight: bold;
+        }
+        .btn-golden:hover {
+            background-color: #e6c300;
+        }
+        .btn-golden:disabled {
+            background-color: #a08c00;
+            cursor: not-allowed;
+        }
+        .tag-golden {
+            background-color: #ffd700;
+            color: #121212;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: bold;
+        }
+        .header-bg {
+            background-color: #1e1e1e;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #ffd700;
+            color: #121212;
+            border-radius: 50%;
+            padding: 1px 6px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: none;
+        }
+        .delete-btn {
+            background-color: #ef4444; color: white; border: none;
+            padding: 4px 10px; border-radius: 6px; font-size: 0.8rem;
+            cursor: pointer; transition: background-color 0.2s;
+        }
+        .delete-btn:hover { background-color: #dc2626; }
+        .payment-btn {
+            display: flex; align-items: center; justify-content: center;
+            padding: 12px; border: 1px solid #4a4a4a; border-radius: 8px;
+            background-color: #2d2d2d; transition: background-color 0.3s;
+            font-size: 1.1rem; text-decoration: none; color: white;
+        }
+        .payment-btn:hover { background-color: #3d3d3d; }
+        .payment-btn.disabled { opacity: 0.5; cursor: not-allowed; }
+        .payment-btn i { margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header-bg shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4 border-b border-gray-700">
+                <div id="cart-icon" class="relative cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white hover:text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </div>
+                <div class="text-2xl font-bold text-yellow-400"><a href="#">wafarly</a></div>
+                <div class="hidden md:flex items-center space-x-6 space-x-reverse text-lg"><a href="#" id="products-link" class="hover:text-yellow-400">المنتجات</a></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Page -->
+    <main id="products-page" class="container mx-auto p-4 md:p-8">
+        <div class="flex justify-end items-center mb-6"><h1 class="text-2xl font-bold w-full">16 منتج</h1></div>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+            <!-- Product Cards -->
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/52LjqR7h/E5g81dph47j-FRiki-TPt-QLYpr-Aqs-Gu-NM8-SKbcx-Pu-B.webp" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">بكدج السولز</h3><p class="text-gray-400 line-through">$90.00</p><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$19.50</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/jqNRw7D5/34.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تستلم ثلاث نسخ لأكثر من مستخدم </div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">تشايند توجزر</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$5.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/WzPL65d4/46.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">لاست اوف اس 1&2</h3><p class="text-gray-400 line-through">$75.00</p><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$15.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/QMH3X9Lj/11.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">اوت لاست 1&2&3</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$22.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/P5qG4p51/5.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">سبايدر مان مايلز & العادي</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$16.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/P5qG4p51/5.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">سبايدر مان مايلز &سبايدر 2</h3><p class="text-gray-400 line-through">$55.00</p><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$17.70</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/MGhhq9bY/6.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">ثلاثيه سبايدر مان</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$27.32</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/kXfzBJvG/Screenshot-2025-06-29-054651.png" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">ريزدنت ايفل 8&7</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$10.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/g2j5hCgD/3.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">هيت مان3</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$10.20</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/nV1wPF52/2.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">هيت مان 2</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$7.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/y8GGyL5z/4.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">هيت مان كلاسيك</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$5.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/DwSj0qzp/863af2aa-904f-46b2-8dc0-5a4ff5f4948e-1000x562.webp" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">بكدج هيت مان</h3><p class="text-gray-400 line-through">$98.00</p><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$18.88</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/zG4dgVbz/1.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">ستار فيلد</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$9.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/BvDmc4Hx/0.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">سيكيرو</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$13.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/4dgBWqQj/image.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">الدن رينج مع الاضافه</h3><p class="text-gray-400 line-through">$81.99</p><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$17.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+            <div class="card rounded-lg overflow-hidden flex flex-col"><div class="relative"><img src="https://i.postimg.cc/XJkxmL2q/images.jpg" alt="Game Cover" class="w-full h-auto object-cover"><div class="absolute top-2 left-2 tag-golden">تسليم فوري</div></div><div class="p-4 flex flex-col flex-grow"><h3 class="font-bold text-lg mb-2 flex-grow game-name">ثلاثيه دارك سولز مع الاضافات</h3><p class="text-yellow-400 font-bold text-xl mb-4 game-price">$20.00</p><button class="w-full btn-golden py-2 rounded-md mt-auto add-to-cart-btn">إضافة للسلة</button></div></div>
+        </div>
+    </main>
+
+    <!-- Cart Page -->
+    <section id="cart-page" class="container mx-auto p-4 md:p-8 hidden">
+        <h1 id="cart-title" class="text-3xl font-bold mb-6 text-yellow-400">سلة التسوق</h1>
+        
+        <!-- Instructions Box -->
+        <div id="instructions-box" class="relative bg-yellow-900/30 border border-yellow-500 text-yellow-200 px-4 pr-8 py-3 rounded-lg mb-6">
+            <button id="close-instructions-btn" class="absolute top-2 left-3 text-yellow-200 hover:text-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="font-bold text-yellow-400">تعليمات هامة قبل الدفع!</h3>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+                <li>الرجاء أخذ لقطة شاشة (صورة) للسلة بعد إدخال بريدك الإلكتروني.</li>
+                <li>الرجاء أخذ لقطة شاشة لإثبات عملية التحويل بعد الدفع.</li>
+                <li>الرجاء تصوير رقم الطلبيه.</li>
+                <li class="text-gray-400">(ملاحظة: هذه الإجراءات مؤقتة وسيتم إلغاؤها قريباً).</li>
+            </ul>
+        </div>
+        
+        <div id="cart-items-container" class="bg-gray-800/50 p-6 rounded-lg"></div>
+        
+        <div id="total-container" class="mt-6 pt-4 border-t border-gray-700 text-left">
+            <h2 class="text-2xl font-bold">المجموع: <span id="total-price" class="text-yellow-400">$0.00</span></h2>
+        </div>
+        
+        <div id="payment-section" class="mt-8">
+            <div id="email-capture-section" class="max-w-md mx-auto">
+                <label for="customer-email" class="block text-lg mb-2 text-center">أدخل بريدك الإلكتروني لإتمام الدفع</label>
+                <input type="email" id="customer-email" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white text-center text-lg" placeholder="email@example.com" required>
+                <p id="email-error" class="text-red-500 text-center mt-2 hidden">الرجاء إدخال بريد إلكتروني صحيح.</p>
+                <button id="continue-to-payment-btn" class="w-full btn-golden py-3 rounded-md mt-4 text-lg">متابعة للدفع</button>
+            </div>
+
+            <div id="payment-options" class="hidden mt-8">
+                <h2 class="text-2xl font-bold mb-4 text-center">اختر طريقة الدفع</h2>
+                <p class="text-center mb-4">سيتم إرسال المنتجات إلى: <strong id="display-email" class="text-yellow-400"></strong></p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <a id="paypal-link" href="#" target="_blank" class="payment-btn"><i class="fab fa-paypal fa-2x"></i> PayPal</a>
+                    <button class="payment-btn disabled" title="قريباً"><i class="fab fa-apple-pay fa-2x"></i> Apple Pay</button>
+                    <button class="payment-btn disabled" title="قريباً"><i class="fas fa-credit-card fa-2x"></i> بطاقة بنكية</button>
+                </div>
+                <p class="text-center text-gray-500 mt-2 text-sm">طرق الدفع الأخرى ستكون متاحة قريباً.</p>
+            </div>
+        </div>
+        
+        <!-- Order Confirmation Section (Initially Hidden) -->
+        <div id="order-confirmation" class="hidden mt-8 text-center bg-green-900/50 border border-green-500 p-6 rounded-lg">
+            <h2 class="text-3xl font-bold text-green-400 mb-4">تم استلام طلبك بنجاح!</h2>
+            <p class="text-lg">سيتم تسليم الطلب في أقرب وقت ممكن و نرجو ارسال اثبات اتمام الشراء و رقم الطلب.</p>
+            <p class="mt-4 text-lg">رقم الطلب الخاص بك هو:</p>
+            <p id="order-number" class="text-2xl font-bold text-yellow-400 font-mono mt-2"></p>
+        </div>
+
+        <button id="back-to-products" class="mt-6 btn-golden px-6 py-2 rounded-md">العودة للمنتجات</button>
+    </section>
+    
+    <script>
+        let cart = [];
+        let customerEmail = '';
+
+        const productsPage = document.getElementById('products-page');
+        const cartPage = document.getElementById('cart-page');
+        const cartIcon = document.getElementById('cart-icon');
+        const cartBadge = document.getElementById('cart-badge');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const backToProductsBtn = document.getElementById('back-to-products');
+        const productsLink = document.getElementById('products-link');
+        const totalPriceEl = document.getElementById('total-price');
+        const totalContainer = document.getElementById('total-container'); // FIX: Variable was not defined
+        const cartTitle = document.getElementById('cart-title');
+        
+        // Instructions Box Elements
+        const instructionsBox = document.getElementById('instructions-box');
+        const closeInstructionsBtn = document.getElementById('close-instructions-btn');
+
+        // Payment Section Elements
+        const paymentSection = document.getElementById('payment-section');
+        const emailCaptureSection = document.getElementById('email-capture-section');
+        const customerEmailInput = document.getElementById('customer-email');
+        const continueToPaymentBtn = document.getElementById('continue-to-payment-btn');
+        const emailError = document.getElementById('email-error');
+        const paymentOptions = document.getElementById('payment-options');
+        const displayEmail = document.getElementById('display-email');
+        const paypalLink = document.getElementById('paypal-link');
+
+        // Order Confirmation Elements
+        const orderConfirmation = document.getElementById('order-confirmation');
+        const orderNumber = document.getElementById('order-number');
+
+        function renderCartItems() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-center text-gray-400">السلة فارغة حالياً.</p>';
+                totalPriceEl.textContent = '$0.00';
+                paymentSection.style.display = 'none';
+                instructionsBox.style.display = 'none';
+                return;
+            }
+            
+            instructionsBox.style.display = 'block';
+            paymentSection.style.display = 'block';
+            emailCaptureSection.style.display = 'block';
+            paymentOptions.style.display = 'none';
+            orderConfirmation.classList.add('hidden'); // Ensure confirmation is hidden
+            totalContainer.style.display = 'block';
+            cartItemsContainer.style.display = 'block';
+            cartTitle.classList.remove('hidden');
+
+            customerEmailInput.value = ''; 
+            emailError.classList.add('hidden');
+
+            const ul = document.createElement('ul');
+            ul.className = 'space-y-3';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'text-lg text-white p-3 bg-gray-700/50 rounded-md flex justify-between items-center';
+                li.innerHTML = `<div><span>${item.name}</span><span class="font-mono block text-sm text-gray-400">$${item.price.toFixed(2)}</span></div><button class="delete-btn" data-name="${item.name}">حذف</button>`;
+                ul.appendChild(li);
+                total += item.price;
+            });
+            cartItemsContainer.appendChild(ul);
+            totalPriceEl.textContent = `$${total.toFixed(2)}`;
+            
+            paypalLink.href = `https://www.paypal.me/HosnyAmr9/${total.toFixed(2)}USD`;
+        }
+        
+        function removeFromCart(gameName) {
+            cart = cart.filter(item => item.name !== gameName);
+            const allProductCards = document.querySelectorAll('#products-page .card');
+            allProductCards.forEach(card => {
+                const nameEl = card.querySelector('.game-name');
+                if (nameEl && nameEl.textContent === gameName) {
+                    const button = card.querySelector('.add-to-cart-btn');
+                    button.disabled = false;
+                    button.textContent = 'إضافة للسلة';
+                }
+            });
+            updateCartBadge();
+            renderCartItems(); 
+        }
+
+        function updateCartBadge() {
+            cartBadge.textContent = cart.length;
+            cartBadge.style.display = cart.length > 0 ? 'block' : 'none';
+        }
+
+        function showCartPage() {
+            productsPage.classList.add('hidden');
+            cartPage.classList.remove('hidden');
+            if (cart.length > 0) {
+                 instructionsBox.style.display = 'block';
+            }
+            renderCartItems();
+        }
+
+        function showProductsPage() {
+            cartPage.classList.add('hidden');
+            productsPage.classList.remove('hidden');
+        }
+
+        function validateEmail(email) {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function generateOrderNumber() {
+            // Creates a random 8-character alphanumeric string
+            return Math.random().toString(36).substring(2, 10).toUpperCase();
+        }
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.card');
+                const gameName = card.querySelector('.game-name').textContent;
+                const priceString = card.querySelector('.game-price').textContent;
+                const gamePrice = parseFloat(priceString.replace(/[^0-9.-]+/g,""));
+
+                if (!cart.some(item => item.name === gameName)) {
+                    cart.push({ name: gameName, price: gamePrice });
+                    updateCartBadge();
+                    button.textContent = 'تمت الإضافة';
+                    button.disabled = true;
+                }
+            });
+        });
+
+        cartItemsContainer.addEventListener('click', function(event) {
+            if (event.target.classList.contains('delete-btn')) {
+                removeFromCart(event.target.dataset.name);
+            }
+        });
+
+        continueToPaymentBtn.addEventListener('click', () => {
+            const email = customerEmailInput.value;
+            if (validateEmail(email)) {
+                customerEmail = email;
+                emailError.classList.add('hidden');
+                emailCaptureSection.style.display = 'none';
+                paymentOptions.style.display = 'block';
+                displayEmail.textContent = customerEmail;
+            } else {
+                emailError.classList.remove('hidden');
+            }
+        });
+
+        closeInstructionsBtn.addEventListener('click', () => {
+            instructionsBox.style.display = 'none';
+        });
+
+        // Add listener to the PayPal link to trigger the confirmation
+        paypalLink.addEventListener('click', () => {
+            // 1. Hide all cart and payment elements
+            instructionsBox.style.display = 'none';
+            cartItemsContainer.style.display = 'none';
+            totalContainer.style.display = 'none';
+            paymentSection.style.display = 'none';
+            cartTitle.classList.add('hidden');
+            
+            // 2. Generate and display the order confirmation
+            orderNumber.textContent = generateOrderNumber();
+            orderConfirmation.classList.remove('hidden');
+
+            // 3. Clear the cart
+            cart = [];
+            updateCartBadge();
+            
+            // 4. Reset product buttons
+             const allProductCards = document.querySelectorAll('#products-page .card');
+            allProductCards.forEach(card => {
+                const button = card.querySelector('.add-to-cart-btn');
+                if (button.disabled) {
+                    button.disabled = false;
+                    button.textContent = 'إضافة للسلة';
+                }
+            });
+        });
+
+        cartIcon.addEventListener('click', showCartPage);
+        backToProductsBtn.addEventListener('click', showProductsPage);
+        productsLink.addEventListener('click', (e) => { e.preventDefault(); showProductsPage(); });
+    </script>
+</body>
+</html>
